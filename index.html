@@ -20,16 +20,17 @@
   input {
     visibility: visible; /* Ensure visibility for user interaction */
     width: 4em; /* Ensure inputs fit nicely */
-    background-color: #fff; /* Make inputs visually distinct */
+    /* background-color: #fff; Make inputs visually distinct */
     color: #000; /* Ensure text is readable */
-    border: 1px solid #ccc; /* Style to match the table */
+    /* border: 1px solid #ccc; Style to match the table */
     border-radius: 0.25rem; /* Match Bootstrap's border radius */
     text-align: center; /* Center text inside inputs */
   }
 </style>
 
 <body>
-  <div class="container mt-5">
+  <!-- <div class="container"> -->
+  <div>
     <table class="table table-dark table-borderless">
       <thead>
         <tr>
@@ -116,8 +117,8 @@
       let solInvestment = solAveragePrice * solQuantity;
       let btcGbpProfit = btcGbpPnl-800; // Assuming initial investment was in GBP
       let solGbpProfit = solGbpPnl-39; // Assuming initial investment was in GBP
-      let btcPctProfit = (btcGbpProfit / (btcInvestment * conversionRate)) * 100;
-      let solPctProfit = (solGbpProfit / (solInvestment * conversionRate)) * 100;
+      let btcPctProfit = ((btcGbpProfit - 800)/800)*100;
+      let solPctProfit = ((solGbpProfit - 39)/ 39)*100;
   
       // Update BTC and SOL values
       document.getElementById('btcPnl').innerText = btcPnl.toFixed(2);
@@ -133,8 +134,8 @@
       // Calculate totals
       let totalGbpPnl = btcGbpPnl + solGbpPnl;
       let totalInvestment = (btcInvestment + solInvestment) * conversionRate;
-      let totalGbpProfit = totalGbpPnl; // Total GBP profit
-      let totalPctProfit = (totalGbpProfit / totalInvestment) * 100;
+      let totalGbpProfit = totalGbpPnl-839; // Total GBP profit
+      let totalPctProfit = ((totalGbpProfit - 839)/839) * 100;
   
       // Update total values
       document.getElementById('totalPnl').innerText = (btcPnl + solPnl).toFixed(2);
