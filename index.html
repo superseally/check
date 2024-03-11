@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <title>BTC & SOL</title>
+</head>
+<style>
+  @import url('http://fonts.cdnfonts.com/css/inter');
+
+  body,
+  input,
+  span {
+    font-family: 'Inter', sans-serif;
+  }
+
+  input {
+    visibility: visible; /* Ensure visibility for user interaction */
+    width: 4em; /* Ensure inputs fit nicely */
+    background-color: #fff; /* Make inputs visually distinct */
+    color: #000; /* Ensure text is readable */
+    border: 1px solid #ccc; /* Style to match the table */
+    border-radius: 0.25rem; /* Match Bootstrap's border radius */
+    text-align: center; /* Center text inside inputs */
+  }
+</style>
+
+<body>
+  <div class="container mt-5">
+    <table class="table table-dark table-borderless">
+      <thead>
+        <tr>
+          <th scope="col">Coin</th>
+          <th scope="col">Holdings</th>
+          <th scope="col">($) Last Price</th>
+          <th scope="col">($) Value</th>
+          <th scope="col">(£) Value</th>
+          <th scope="col">(£) Return</th>
+          <th scope="col">(%) Return</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">BTC</th>
+          <td><input type="number" id="qtyBTC" value="0.1"></td>
+          <td id="btcPrice">----</td>
+          <td id="btcPnl">----</td>
+          <td id="btcGbpPnl">----</td>
+          <td id="btcGbpProfit">----</td>
+          <td id="btcPctProfit">----</td>
+        </tr>
+        <tr>
+          <th scope="row">SOL</th>
+          <td><input type="number" id="qtySOL" value="3"></td>
+          <td id="solPrice">----</td>
+          <td id="solPnl">----</td>
+          <td id="solGbpPnl">----</td>
+          <td id="solGbpProfit">----</td>
+          <td id="solPctProfit">----</td>
+        </tr>
+        <tr>
+          <th scope="row">TOTAL</th>
+          <td>----</td>
+          <td>----</td>
+          <td id="totalPnl">----</td>
+          <td id="totalGbpPnl">----</td>
+          <td id="totalGbpProfit">----</td>
+          <td id="totalPctProfit">----</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Hidden inputs for average buying prices, to simplify the HTML structure -->
+    <input type="hidden" id="avgBTC" value="8000">
+    <input type="hidden" id="avgSOL" value="13">
+
+  </div>
+
+  <script>
+    let btcws = new WebSocket('wss://stream.binance.com:9443/ws/btcusdt@trade');
+    let solws = new WebSocket('wss://stream.binance.com:9443/ws/solusdt@trade');
+  
+    let bitcoinPriceElement = document.getElementById('btcPrice');
+    let SolanaPriceElement = document.getElementById('solPrice');
+  
+    let qtyBTC = document.getElementById('qtyBTC');
+    let avgBTC = document.getElementById('avgBTC');
+    let qtySOL = document.getElementById('qtySOL');
+    let avgSOL = document.getElementById('avgSOL');
+  
+    // Conversion rate from USD to GBP (example rate, adjust as needed)
+    const conversionRate = 0.777;
+  
+    function updateValues() {
+      // Parse values from inputs and text elements
+      let btcQuantity = parseFloat(qtyBTC.value) || 0;
+      let solQuantity = parseFloat(qtySOL.value) || 0;
+      let btcCurrentPrice = parseFloat(bitcoinPriceElement.innerText) || 0;
+      let solCurrentPrice = parseFloat(SolanaPriceElement.innerText) || 0;
+      let btcAveragePrice = parseFloat(avgBTC.value) || 0;
+      let solAveragePrice = parseFloat(avgSOL.value) || 0;
+  
+      // Calculate USD and GBP P&L
+      // let btcPnl = (btcCurrentPrice - btcAveragePrice) * btcQuantity;
+      let btcPnl = (btcCurrentPrice) * btcQuantity;
+      let btcGbpPnl = btcPnl * conversionRate;
+      // let solPnl = (solCurrentPrice - solAveragePrice) * solQuantity;
+      let solPnl = (solCurrentPrice) * solQuantity;
+      let solGbpPnl = solPnl * conversionRate;
+  
+      // Calculate profit and percentage profit
+      let btcInvestment = btcAveragePrice * btcQuantity;
+      let solInvestment = solAveragePrice * solQuantity;
+      let btcGbpProfit = btcGbpPnl-800; // Assuming initial investment was in GBP
+      let solGbpProfit = solGbpPnl-39; // Assuming initial investment was in GBP
+      let btcPctProfit = (btcGbpProfit / (btcInvestment * conversionRate)) * 100;
+      let solPctProfit = (solGbpProfit / (solInvestment * conversionRate)) * 100;
+  
+      // Update BTC and SOL values
+      document.getElementById('btcPnl').innerText = btcPnl.toFixed(2);
+      document.getElementById('btcGbpPnl').innerText = btcGbpPnl.toFixed(2);
+      document.getElementById('btcGbpProfit').innerText = btcGbpProfit.toFixed(2);
+      document.getElementById('btcPctProfit').innerText = btcPctProfit.toFixed(2);
+      
+      document.getElementById('solPnl').innerText = solPnl.toFixed(2);
+      document.getElementById('solGbpPnl').innerText = solGbpPnl.toFixed(2);
+      document.getElementById('solGbpProfit').innerText = solGbpProfit.toFixed(2);
+      document.getElementById('solPctProfit').innerText = solPctProfit.toFixed(2);
+  
+      // Calculate totals
+      let totalGbpPnl = btcGbpPnl + solGbpPnl;
+      let totalInvestment = (btcInvestment + solInvestment) * conversionRate;
+      let totalGbpProfit = totalGbpPnl; // Total GBP profit
+      let totalPctProfit = (totalGbpProfit / totalInvestment) * 100;
+  
+      // Update total values
+      document.getElementById('totalPnl').innerText = (btcPnl + solPnl).toFixed(2);
+      document.getElementById('totalGbpPnl').innerText = totalGbpPnl.toFixed(2);
+      document.getElementById('totalGbpProfit').innerText = totalGbpProfit.toFixed(2);
+      document.getElementById('totalPctProfit').innerText = totalPctProfit.toFixed(2);
+    }
+  
+    btcws.onmessage = (event) => {
+      let bitcoinObject = JSON.parse(event.data);
+      let BTCprice = parseFloat(bitcoinObject.p).toFixed(2);
+      bitcoinPriceElement.innerText = BTCprice;
+      updateValues(); // Refresh values on BTC price update
+    }
+  
+    solws.onmessage = (event) => {
+      let SolanaObject = JSON.parse(event.data);
+      let SOLprice = parseFloat(SolanaObject.p).toFixed(2);
+      SolanaPriceElement.innerText = SOLprice;
+      updateValues(); // Refresh values on SOL price update
+    }
+  </script>
+  </body>
+</html>
