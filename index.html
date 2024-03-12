@@ -20,24 +20,28 @@
   input {
     visibility: visible; /* Ensure visibility for user interaction */
     width: 4em; /* Ensure inputs fit nicely */
-    /* background-color: #fff; Make inputs visually distinct */
-    color: #000; /* Ensure text is readable */
+    background-color: #000; /* Make inputs visually distinct */
+    color: #fff; /* Ensure text is readable */
+
     /* border: 1px solid #ccc; Style to match the table */
-    border-radius: 0.25rem; /* Match Bootstrap's border radius */
-    text-align: center; /* Center text inside inputs */
+    /* border-radius: 0.25rem;  Match Bootstrap's border radius */
+    /* text-align: center;  Center text inside inputs */
   }
+
+  
 </style>
 
 <body>
   <!-- <div class="container"> -->
   <div>
-    <table class="table table-dark table-borderless">
+    <table class="table table-dark table-borderless table-striped">
       <thead>
         <tr>
           <th scope="col">Coin</th>
           <th scope="col">Holdings</th>
-          <th scope="col">($) Last Price</th>
-          <th scope="col">($) Value</th>
+          <th scope="col">(£) Cost</th>
+          <th scope="col">($) Price</th>
+          <th scope="col" style="display: none;">($) Value</th>
           <th scope="col">(£) Value</th>
           <th scope="col">(£) Return</th>
           <th scope="col">(%) Return</th>
@@ -47,8 +51,9 @@
         <tr>
           <th scope="row">BTC</th>
           <td><input type="number" id="qtyBTC" value="0.1"></td>
+          <td>800</td>
           <td id="btcPrice">----</td>
-          <td id="btcPnl">----</td>
+          <td id="btcPnl" style="display: none;">----</td>
           <td id="btcGbpPnl">----</td>
           <td id="btcGbpProfit">----</td>
           <td id="btcPctProfit">----</td>
@@ -56,8 +61,9 @@
         <tr>
           <th scope="row">SOL</th>
           <td><input type="number" id="qtySOL" value="3"></td>
+          <td>39</td>
           <td id="solPrice">----</td>
-          <td id="solPnl">----</td>
+          <td id="solPnl" style="display: none;">----</td>
           <td id="solGbpPnl">----</td>
           <td id="solGbpProfit">----</td>
           <td id="solPctProfit">----</td>
@@ -65,8 +71,9 @@
         <tr>
           <th scope="row">TOTAL</th>
           <td>----</td>
+          <td>839</td>
           <td>----</td>
-          <td id="totalPnl">----</td>
+          <td id="totalPnl" style="display: none;">----</td>
           <td id="totalGbpPnl">----</td>
           <td id="totalGbpProfit">----</td>
           <td id="totalPctProfit">----</td>
