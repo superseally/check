@@ -168,151 +168,161 @@
                         type="button" role="tab" aria-controls="links" aria-selected="true">Links</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="btc-tab" data-bs-toggle="tab" data-bs-target="#btc" type="button"
-                        role="tab" aria-controls="btc" aria-selected="false">BTC Chart</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="sol-tab" data-bs-toggle="tab" data-bs-target="#sol" type="button"
-                        role="tab" aria-controls="sol" aria-selected="false">SOL Chart</button>
+                    <button class="nav-link" id="chart-tab" data-bs-toggle="tab" data-bs-target="#chart" type="button"
+                        role="tab" aria-controls="chart" aria-selected="false">Chart</button>
                 </li>
             </ul>
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="links" role="tabpanel" aria-labelledby="links-tab">
-
                     <!-- ======================================================== -->
                     <!-- Sharing -->
                     <!-- ======================================================== -->
 
                     <div class="list-group">
-                        <a href="https://youtu.be/wNyE1wU1_38?&t=693" class="list-group-item list-group-item-action" target="_blank">Video about FTX and Hertz Bankruptcy</a>
-                      </div>
+                        <a href="https://youtu.be/wNyE1wU1_38?&t=693" class="list-group-item list-group-item-action"
+                            target="_blank">Video about FTX and Hertz Bankruptcy</a>
+                    </div>
+
+
                 </div>
-            </div>
-            <div class="tab-pane fade" id="btc" role="tabpanel" aria-labelledby="btc-tab">
-                <!-- TradingView Widget BEGIN -->
-                <div class="tradingview-widget-container">
-                    <div class="tradingview-widget-container__widget"></div>
-                    <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/"
-                            rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on
-                                TradingView</span></a></div>
-                    <script type="text/javascript"
-                        src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
-                            {
-                                "autosize": true,
-                                    "symbol": "BINANCE:BTCUSDT",
-                                        "interval": "60",
-                                            "timezone": "Etc/UTC",
-                                                "theme": "dark",
-                                                    "style": "1",
-                                                        "locale": "en",
-                                                            "allow_symbol_change": false,
-                                                                "save_image": false,
-                                                                    "calendar": false,
-                                                                        "support_host": "https://www.tradingview.com"
-                            }
-                        </script>
+                <div class="tab-pane fade" id="chart" role="tabpanel" aria-labelledby="chart-tab">
+                    <!-- TradingView Widget BEGIN -->
+                    <div class="tradingview-widget-container">
+                        <div class="tradingview-widget-container__widget"></div>
+                        <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/"
+                                rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on
+                                    TradingView</span></a></div>
+                        <script type="text/javascript"
+                            src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
+                                {
+                                    "symbols": [
+                                        [
+                                            "BINANCE:BTCUSDT|1D"
+                                        ],
+                                        [
+                                            "BINANCE:SOLUSDT|1D"
+                                        ],
+                                        [
+                                            "BINANCE:XRPUSDT|1D"
+                                        ]
+                                    ],
+                                        "chartOnly": false,
+                                            "width": "100%",
+                                                "height": "100%",
+                                                    "locale": "en",
+                                                        "colorTheme": "dark",
+                                                            "autosize": true,
+                                                                "showVolume": false,
+                                                                    "showMA": false,
+                                                                        "hideDateRanges": false,
+                                                                            "hideMarketStatus": false,
+                                                                                "hideSymbolLogo": false,
+                                                                                    "scalePosition": "right",
+                                                                                        "scaleMode": "Normal",
+                                                                                            "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
+                                                                                                "fontSize": "10",
+                                                                                                    "noTimeScale": false,
+                                                                                                        "valuesTracking": "1",
+                                                                                                            "changeMode": "price-and-percent",
+                                                                                                                "chartType": "area",
+                                                                                                                    "maLineColor": "#2962FF",
+                                                                                                                        "maLineWidth": 1,
+                                                                                                                            "maLength": 9,
+                                                                                                                                "lineWidth": 2,
+                                                                                                                                    "lineType": 0,
+                                                                                                                                        "dateRanges": [
+                                                                                                                                            "1d|1",
+                                                                                                                                            "1w|15",
+                                                                                                                                            "1m|30",
+                                                                                                                                            "3m|60",
+                                                                                                                                            "12m|1D",
+                                                                                                                                            "60m|1W",
+                                                                                                                                            "all|1M"
+                                                                                                                                        ],
+                                                                                                                                            "upColor": "#22ab94",
+                                                                                                                                                "downColor": "#f7525f",
+                                                                                                                                                    "borderUpColor": "#22ab94",
+                                                                                                                                                        "borderDownColor": "#f7525f",
+                                                                                                                                                            "wickUpColor": "#22ab94",
+                                                                                                                                                                "wickDownColor": "#f7525f"
+                                }
+                            </script>
+                    </div>
+                    <!-- TradingView Widget END -->
                 </div>
-                <!-- TradingView Widget END -->
-            </div>
-            <div class="tab-pane fade" id="sol" role="tabpanel" aria-labelledby="sol-tab">
-                <!-- TradingView Widget BEGIN -->
-                <div class="tradingview-widget-container">
-                    <div class="tradingview-widget-container__widget"></div>
-                    <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/"
-                            rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on
-                                TradingView</span></a></div>
-                    <script type="text/javascript"
-                        src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
-                            {
-                                "autosize": true,
-                                    "symbol": "COINBASE:SOLUSD",
-                                        "interval": "60",
-                                            "timezone": "Etc/UTC",
-                                                "theme": "dark",
-                                                    "style": "1",
-                                                        "locale": "en",
-                                                            "allow_symbol_change": false,
-                                                                "save_image": false,
-                                                                    "calendar": false,
-                                                                        "support_host": "https://www.tradingview.com"
-                            }
-                        </script>
-                </div>
-                <!-- TradingView Widget END -->
             </div>
         </div>
-    </div>
 
-    <script>
-        let btcws = new WebSocket('wss://stream.binance.com:9443/ws/btcusdt@trade');
-        let solws = new WebSocket('wss://stream.binance.com:9443/ws/solusdt@trade');
+        <script>
+            let btcws = new WebSocket('wss://stream.binance.com:9443/ws/btcusdt@trade');
+            let solws = new WebSocket('wss://stream.binance.com:9443/ws/solusdt@trade');
 
-        let bitcoinPriceElement = document.getElementById('btcPrice');
-        let SolanaPriceElement = document.getElementById('solPrice');
+            let bitcoinPriceElement = document.getElementById('btcPrice');
+            let SolanaPriceElement = document.getElementById('solPrice');
 
-        let qtyBTC = document.getElementById('qtyBTC');
-        let avgBTC = document.getElementById('avgBTC');
-        let qtySOL = document.getElementById('qtySOL');
-        let avgSOL = document.getElementById('avgSOL');
+            let qtyBTC = document.getElementById('qtyBTC');
+            let avgBTC = document.getElementById('avgBTC');
+            let qtySOL = document.getElementById('qtySOL');
+            let avgSOL = document.getElementById('avgSOL');
 
-        // Conversion rate from USD to GBP (example rate, adjust as needed)
-        const conversionRate = 0.777;
+            // Conversion rate from USD to GBP (example rate, adjust as needed)
+            const conversionRate = 0.777;
 
-        function updateValues() {
-            let btcQuantity = parseFloat(qtyBTC.value) || 0;
-            let solQuantity = parseFloat(qtySOL.value) || 0;
-            let btcCurrentPrice = parseFloat(bitcoinPriceElement.innerText) || 0;
-            let solCurrentPrice = parseFloat(SolanaPriceElement.innerText) || 0;
-            let btcAveragePrice = parseFloat(avgBTC.value) || 0;
-            let solAveragePrice = parseFloat(avgSOL.value) || 0;
+            function updateValues() {
+                let btcQuantity = parseFloat(qtyBTC.value) || 0;
+                let solQuantity = parseFloat(qtySOL.value) || 0;
+                let btcCurrentPrice = parseFloat(bitcoinPriceElement.innerText) || 0;
+                let solCurrentPrice = parseFloat(SolanaPriceElement.innerText) || 0;
+                let btcAveragePrice = parseFloat(avgBTC.value) || 0;
+                let solAveragePrice = parseFloat(avgSOL.value) || 0;
 
-            let btcPnl = (btcCurrentPrice) * btcQuantity;
-            let btcGbpPnl = btcPnl * conversionRate;
-            let solPnl = (solCurrentPrice) * solQuantity;
-            let solGbpPnl = solPnl * conversionRate;
+                let btcPnl = (btcCurrentPrice) * btcQuantity;
+                let btcGbpPnl = btcPnl * conversionRate;
+                let solPnl = (solCurrentPrice) * solQuantity;
+                let solGbpPnl = solPnl * conversionRate;
 
-            let btcInvestment = btcAveragePrice * btcQuantity;
-            let solInvestment = solAveragePrice * solQuantity;
-            let btcGbpProfit = btcGbpPnl - 800;
-            let solGbpProfit = solGbpPnl - 39;
-            let btcPctProfit = ((btcGbpProfit - 800) / 800) * 100;
-            let solPctProfit = ((solGbpProfit - 39) / 39) * 100;
+                let btcInvestment = btcAveragePrice * btcQuantity;
+                let solInvestment = solAveragePrice * solQuantity;
+                let btcGbpProfit = btcGbpPnl - 800;
+                let solGbpProfit = solGbpPnl - 39;
+                let btcPctProfit = ((btcGbpProfit - 800) / 800) * 100;
+                let solPctProfit = ((solGbpProfit - 39) / 39) * 100;
 
-            document.getElementById('btcPnl').innerText = btcPnl.toFixed(2);
-            document.getElementById('btcGbpPnl').innerText = btcGbpPnl.toFixed(2);
-            document.getElementById('btcGbpProfit').innerText = btcGbpProfit.toFixed(2);
-            document.getElementById('btcPctProfit').innerText = btcPctProfit.toFixed(2);
+                document.getElementById('btcPnl').innerText = btcPnl.toFixed(2);
+                document.getElementById('btcGbpPnl').innerText = btcGbpPnl.toFixed(2);
+                document.getElementById('btcGbpProfit').innerText = btcGbpProfit.toFixed(2);
+                document.getElementById('btcPctProfit').innerText = btcPctProfit.toFixed(2);
 
-            document.getElementById('solPnl').innerText = solPnl.toFixed(2);
-            document.getElementById('solGbpPnl').innerText = solGbpPnl.toFixed(2);
-            document.getElementById('solGbpProfit').innerText = solGbpProfit.toFixed(2);
-            document.getElementById('solPctProfit').innerText = solPctProfit.toFixed(2);
+                document.getElementById('solPnl').innerText = solPnl.toFixed(2);
+                document.getElementById('solGbpPnl').innerText = solGbpPnl.toFixed(2);
+                document.getElementById('solGbpProfit').innerText = solGbpProfit.toFixed(2);
+                document.getElementById('solPctProfit').innerText = solPctProfit.toFixed(2);
 
-            let totalGbpPnl = btcGbpPnl + solGbpPnl;
-            let totalInvestment = (btcInvestment + solInvestment) * conversionRate;
-            let totalGbpProfit = totalGbpPnl - 839;
-            let totalPctProfit = ((totalGbpProfit - 839) / 839) * 100;
+                let totalGbpPnl = btcGbpPnl + solGbpPnl;
+                let totalInvestment = (btcInvestment + solInvestment) * conversionRate;
+                let totalGbpProfit = totalGbpPnl - 839;
+                let totalPctProfit = ((totalGbpProfit - 839) / 839) * 100;
 
-            document.getElementById('totalPnl').innerText = (btcPnl + solPnl).toFixed(2);
-            document.getElementById('totalGbpPnl').innerText = totalGbpPnl.toFixed(2);
-            document.getElementById('totalGbpProfit').innerText = totalGbpProfit.toFixed(2);
-            document.getElementById('totalPctProfit').innerText = totalPctProfit.toFixed(2);
-        }
+                document.getElementById('totalPnl').innerText = (btcPnl + solPnl).toFixed(2);
+                document.getElementById('totalGbpPnl').innerText = totalGbpPnl.toFixed(2);
+                document.getElementById('totalGbpProfit').innerText = totalGbpProfit.toFixed(2);
+                document.getElementById('totalPctProfit').innerText = totalPctProfit.toFixed(2);
+            }
 
-        btcws.onmessage = (event) => {
-            let bitcoinObject = JSON.parse(event.data);
-            let BTCprice = parseFloat(bitcoinObject.p).toFixed(2);
-            bitcoinPriceElement.innerText = BTCprice;
-            updateValues();
-        }
+            btcws.onmessage = (event) => {
+                let bitcoinObject = JSON.parse(event.data);
+                let BTCprice = parseFloat(bitcoinObject.p).toFixed(2);
+                bitcoinPriceElement.innerText = BTCprice;
+                updateValues();
+            }
 
-        solws.onmessage = (event) => {
-            let SolanaObject = JSON.parse(event.data);
-            let SOLprice = parseFloat(SolanaObject.p).toFixed(2);
-            SolanaPriceElement.innerText = SOLprice;
-            updateValues();
-        }
-    </script>
+            solws.onmessage = (event) => {
+                let SolanaObject = JSON.parse(event.data);
+                let SOLprice = parseFloat(SolanaObject.p).toFixed(2);
+                SolanaPriceElement.innerText = SOLprice;
+                updateValues();
+            }
+        </script>
 </body>
 
 </html>
